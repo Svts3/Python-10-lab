@@ -27,11 +27,12 @@ class BinaryTree:
                 print(root.x, root.y, sep=", ")
             self.print_all_positive_y(root.left)
 
-    def go_through_tree_from_up_to_down(self, root):
-        if root is not None:
-            self.go_through_tree_from_up_to_down(root.left)
+    def top_down_tree_traversal(self, root):
+        if root:
             print(root.x, root.y, sep=", ")
-            self.go_through_tree_from_up_to_down(root.right)
+            self.top_down_tree_traversal(root.left)
+            self.top_down_tree_traversal(root.right)
+
 
     def delete_nodes_with_x_and_y(self, root):
         if root is None:
@@ -55,4 +56,3 @@ class BinaryTree:
             return new_root
 
         return root
-
