@@ -33,26 +33,30 @@ class BinaryTree:
             self.top_down_tree_traversal(root.left)
             self.top_down_tree_traversal(root.right)
 
-
     def delete_nodes_with_x_and_y(self, root):
         if root is None:
             return None
-        root.left = self.delete_nodes_with_x_and_y(root.left)
-        root.right = self.delete_nodes_with_x_and_y(root.right)
         if root.left is None and root.right is None:
             return root
-        if root.left and root.left.y < 0 and root.left.x < 0:
-            new_root = root.right
-            temp = root
-            root = None
-            del temp
-            return new_root
-
+        root.left = self.delete_nodes_with_x_and_y(root.left)
+        root.right = self.delete_nodes_with_x_and_y(root.right)
+        if root.left and root.left.y < 0:
+            if root.y > root.left.y and root.x > root.left.x:
+                new_root = root.right
+                temp = root
+                root = None
+                del temp
+                return new_root
+            else:
+                new_root = root.left
+                temp = root
+                root = None
+                del temp
+                return new_root
         if root.right and root.left.y < 0 and root.left.x < 0:
             new_root = root.left
             temp = root
             root = None
             del temp
             return new_root
-
         return root
