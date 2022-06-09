@@ -56,11 +56,10 @@ class BinaryTree:
         return self.left.find_minimal_node()
 
     def delete_node(self, key):
-        node_to_delete = self.search_by_key(key)[0]
-        if node_to_delete.y < self.y:
+        if key < self.y:
             if self.left:
                 self.left = self.left.delete_node(key)
-        elif node_to_delete.y > self.y:
+        elif key > self.y:
             if self.right:
                 self.right = self.right.delete_node(key)
         else:
