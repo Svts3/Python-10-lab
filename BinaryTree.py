@@ -33,7 +33,7 @@ class BinaryTree:
     def get_list_of_keys(self):
         list_of_keys = []
         if self.y < 0 and self.x < 0:
-            list_of_keys.append(self)
+            list_of_keys.append(self.y)
         if self.left:
             list_of_keys += self.left.get_list_of_keys()
         if self.right:
@@ -79,5 +79,4 @@ class BinaryTree:
     def delete_all_negatives(self):
         list_of_keys = self.get_list_of_keys()
         for i in list_of_keys:
-            if i in list_of_keys:
-                self.delete_node(i.y)
+            self.delete_node(i)
